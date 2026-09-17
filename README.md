@@ -9,10 +9,11 @@ paper.
 |---|---|
 | `ga_core.py` | GA logic: fitness, selection, crossover, mutation, I/O helpers. Supports any number of groups/arms. |
 | `ga_cli.py` | Command-line entry point to reproduce **one** run on **one** instance. |
-| `run_all_experiments.py` | Batch driver: runs the GA **once per instance**, over every two-arm and multi-arm instance used in the paper, with the fixed hyperparameters below. Writes `results_summary_long.csv`. |
+| `run_all_experiments.py` | Batch driver: runs the GA **once per instance**, over every two-arm and multi-arm instance used in the paper, with the fixed tuning parameters below. Writes `results_summary_long.csv`. |
 | `build_summary_tables.py` | Turns `results_summary_long.csv` into the paper-ready pivot tables (`table_twoarm.csv`, `table_multiarm_groups3.csv`, `table_multiarm_groups4.csv`). |
+| application | Folder with the code to evaluate the three-arm clinical trials for the weight maintenance trial. |
 
-## Fixed hyperparameters (used for every single run)
+## Fixed tuning parameters (used for every single run)
 
 ```
 population_size = 100
