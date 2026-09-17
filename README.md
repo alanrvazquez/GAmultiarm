@@ -11,6 +11,7 @@ Cervantes-Sanmiguel et al. (2026).
 | `ga_cli.py` | Command-line entry point to reproduce **one** run on **one** instance. |
 | `run_all_experiments.py` | Batch driver: runs the GA **once per instance**, over every two-arm and multi-arm instance used in the paper, with the fixed hyperparameters below. Writes `results_summary_long.csv`. |
 | `build_summary_tables.py` | Turns `results_summary_long.csv` into the paper-ready pivot tables (`table_twoarm.csv`, `table_multiarm_groups3.csv`, `table_multiarm_groups4.csv`). |
+| application | Folder that contains code and data for the application of the weight maintenance trial. |
 
 ## Fixed hyperparameters (used for every single run)
 
