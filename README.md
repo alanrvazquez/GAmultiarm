@@ -1,7 +1,7 @@
-# GAmultiarm
+# GA optimal allocation — supplemental code
 
-Code to reproduce the genetic algorithm allocation results reported in 
-Cervantes-Sanmiguel et al. (2026).
+Code to reproduce the genetic algorithm allocation results reported in the
+paper.
 
 ## Files
 
@@ -11,7 +11,6 @@ Cervantes-Sanmiguel et al. (2026).
 | `ga_cli.py` | Command-line entry point to reproduce **one** run on **one** instance. |
 | `run_all_experiments.py` | Batch driver: runs the GA **once per instance**, over every two-arm and multi-arm instance used in the paper, with the fixed hyperparameters below. Writes `results_summary_long.csv`. |
 | `build_summary_tables.py` | Turns `results_summary_long.csv` into the paper-ready pivot tables (`table_twoarm.csv`, `table_multiarm_groups3.csv`, `table_multiarm_groups4.csv`). |
-| application | Folder that contains code and data for the application of the weight maintenance trial. |
 
 ## Fixed hyperparameters (used for every single run)
 
@@ -129,4 +128,30 @@ automatically) and `M_*.csv` files do not. If any of your files differ,
        --m-file moments_matrices/M_l_2_0.csv \
        --num-subjects 20 --num-groups 2 --num-p 3 \
        --output-dir results/twoarm
+   ```
+
+4. (Application) Run the Weight Maintenance Diet Trial instance with **linear terms**,
+   3 groups, p = 5, using
+   `covariate_matrices_application/H_Weight_Maintenance_Diet_Trial.csv`
+   and `moments_matrices/M_l_3_1.csv` (115 subjects):
+
+   ```bash
+   python ga_cli.py \
+       --h-file covariate_matrices_application/H_Weight_Maintenance_Diet_Trial.csv \
+       --m-file moments_matrices/M_l_3_1.csv \
+       --num-subjects 115 --num-groups 3 --num-p 5 \
+       --output-dir results/application
+   ```
+
+5. (Application) Run the expanded Weight Maintenance Diet Trial instance with **linear and quadratic terms**,
+   3 groups, p = 8, using
+   `covariate_matrices_application/H_Weight_Maintenance_Diet_Trial_expanded.csv`
+   and `moments_matrices/M_q_4_1.csv` (115 subjects):
+
+   ```bash
+   python ga_cli.py \
+       --h-file covariate_matrices_application/H_Weight_Maintenance_Diet_Trial_expanded.csv \
+       --m-file moments_matrices/M_q_4_1.csv \
+       --num-subjects 115 --num-groups 3 --num-p 8 \
+       --output-dir results/application
    ```
