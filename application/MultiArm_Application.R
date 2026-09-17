@@ -1,6 +1,7 @@
 ################################################################################
 #
-# Weight Trial. 
+# Application of genetic algorithm for weight maintenance trial and linear 
+# covariates only. 
 # 
 # Author: Alan Vazquez
 # Affiliation: Tecnologico de Monterrey
@@ -41,14 +42,11 @@ id.select = sample(1:nrow(H.full), 115, replace = FALSE)
 H = H.full[id.select,]
 Zs = H.full[-id.select,]
 
-# Save training matrix for genetic algorithm in Python
-# write.csv(H, file = "Hmat.csv")
-
 # Set actual clinical trial.
 TRT.real = trial.data[id.select, "arm"]
 
 ## Read trial obtained from genetic algorithm.
-X.gen.Iopt = read.csv("GA_asignacion_groups_Hmat_P100_G200_C1p0_M0p1_T2_E3.csv")[,-1]
+X.gen.Iopt = read.csv("GA_linear.csv")[,-1]
 
 # Evaluate genetic algorithm. 
 subj.variances.genetic = matrix(NA, ncol = k, nrow = nrow(Zs))
@@ -97,5 +95,3 @@ fds = ggplot(data = dat.plot, aes(x = ID/nrow(Zs), y = value,
 fds = fds + xlab("Fraction of Subjects") + ylab("Relative GSP Variance") 
 fds = fds + plot.theme + ylim(c(0, 0.4))
 ggsave("figures/FDS.pdf", fds, width=11, height=8.5)
-
-#final.data.Genetic = dat.plot
